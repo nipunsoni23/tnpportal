@@ -30,3 +30,7 @@ body {
     height:auto; 
     align-self:center;
 }
+
+.login-card, .register-card {
+    width: 50%;
+}

@@ -3,13 +3,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import HomePage from "./components/HomePage";
-import LoginPage from "./components/LoginPage";
+import NewLoginPage from "./components/NewLoginPage";
 import HistoryPage from "./components/HistoryPage";
 import AlumniPage from "./components/AlumniPage";
 import FacultyResearchPage from "./components/FacultyResearchPage";
 import CoursesOfferedPage from "./components/CoursesOfferedPage";
 import ProcedurePage from "./components/ProcedurePage";
-import RegisterPage from "./components/RegisterPage";
+import NewRegisterPage from "./components/NewRegisterPage";
 import ContactUsPage from "./components/ContactUsPage";
 import AchievementsPage from './components/AchievementsPage';
 import Header from "./components/Header";
@@ -17,6 +17,7 @@ import Footer from "./components/Footer";
 import CompanyRegisterPage from "./components/CompanyRegisterPage";
 import PageNotFound from './components/PageNotFound';
 import DashboardPage from './components/DashboardPage';
+import AdminDashboardPage from './components/AdminDashboardPage';
 import ResultPage from './components/ResultPage';
 import AdminResultPage from './components/AdminResultPage';
 
@@ -49,17 +50,18 @@ class App extends Component {
                 <Header></Header>
                 <Router>
                 <Switch>    
-                  <Route path="/login" exact component={LoginPage} />
+                  <Route path="/login" exact component={NewLoginPage} />
                   <Route path="/history" exact component={HistoryPage} />
                   <Route path="/alumni" exact component={AlumniPage} />
                   <Route path="/faculty-research" exact component={FacultyResearchPage} />
                   <Route path="/courses-offered" exact component={CoursesOfferedPage} />
                   <Route path="/students-achievements-awards" exact component={AchievementsPage} />
                   <Route path="/procedure" exact component={ProcedurePage} />
-                  <Route path="/register" exact component={RegisterPage} />
+                  <Route path="/register" exact component={NewRegisterPage} />
                   <Route path="/contact-us" exact component={ContactUsPage} />
                   <Route path="/company-register" exact component={CompanyRegisterPage} />
                   { isAuthenticated && user.role==="STUDENT" && <Route path="/student-dashboard" exact component={DashboardPage}/> }
+                  { isAuthenticated && user.role==="ADMIN" && <Route path="/admin-dashboard" exact component={AdminDashboardPage}/> }
                   { isAuthenticated && user.role==="STUDENT" && <Route path="/student-result" exact component={ResultPage}/> }
                   { isAuthenticated && user.role==="ADMIN" && <Route path="/admin-result" exact component={AdminResultPage}/> }
                   <Route path="/" exact component={HomePage} />

@@ -2,3 +2,8 @@
     list-style-type: none;
     padding-inline-start: 0px; 
 }
+
+.delete-button, .edit-button {
+    float: right;
+    margin: 0 0.5rem;
+}

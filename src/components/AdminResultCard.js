@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CardHeader, CardBody, Card, CardFooter, Table } from 'reactstrap';
+import { CardHeader, CardBody, Card, CardFooter, Table, Button } from 'reactstrap';
 
 import './css/ResultCard.css';
 
@@ -9,7 +9,11 @@ class AdminResultCard extends Component {
         return (
             <div>
                 <Card className="mb-3 custom-width custom-margin">
-				<CardHeader className="dark-mode">{result.companyName}</CardHeader>
+				<CardHeader className="dark-mode">
+                    {result.companyName}            
+                    <Button className="delete-button btn-sm"><i className="fa fa-trash"></i> Delete Result</Button>
+                    <Button className="edit-button btn-sm"><i className="fa fa-edit"></i> Edit Result</Button>
+                </CardHeader>
 				<CardBody>
 				<Table striped borderless>
 					<tbody>

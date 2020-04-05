@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getResults } from '../actions/resultActions';
-import AdminResultCard from './AdminResultCard';
-
+import { getJobs } from '../actions/jobActions';
+import AdminCompanyCard from './AdminCompanyCard';
 import {Button} from 'reactstrap';
 
-class AdminResultPage extends Component {
+class DashboardPage extends Component {
 
     static propTypes = {
         isAuthenticated: PropTypes.bool.isRequired,
-        results: PropTypes.array.isRequired,
-        getResults: PropTypes.func.isRequired
+        jobs: PropTypes.array.isRequired,
+        getJobs: PropTypes.func.isRequired
     };
     
     componentDidMount() { 
-        this.props.getResults();     
+        this.props.getJobs();     
     }
 
     render() {
@@ -25,12 +24,12 @@ class AdminResultPage extends Component {
                 <div className="col">
                     <div className="col-xl-12 custom-margin custom-width">
                         <Button>
-                            Add new result
+                            Add new job
                         </Button>
                     </div>
                     <div className="col-xl-12">
-                {this.props.results.map(function(result, index) {
-                    return <AdminResultCard key={result.companyName} result = {result}/>;
+                {this.props.jobs.map(function(job, index) {
+                    return <AdminCompanyCard key={job.drive} job = {job}/>;
                 })}
                 </div>
                 </div>
@@ -42,11 +41,11 @@ class AdminResultPage extends Component {
 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
-    results: state.result.results
+    jobs: state.job.jobs
 });
 
 export default connect(
     mapStateToProps,
-    { getResults }
+    { getJobs }
 )
-(AdminResultPage);
+(DashboardPage);
